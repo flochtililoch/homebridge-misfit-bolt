@@ -1,0 +1,39 @@
+{
+  "name": "homebridge-misfit-bolt",
+  "version": "0.0.0",
+  "description": "Misfit Bolt plugin for homebridge",
+  "keywords": [
+    "homebridge-plugin",
+    "misfit",
+    "bolt"
+  ],
+  "engines": {
+    "node": ">=4.2.1",
+    "homebridge": ">=0.2.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/flochtililoch/homebridge-misfit-bolt.git"
+  },
+  "scripts": {
+    "lint": "./node_modules/.bin/jshint *.js",
+    "patch-release": "npm version patch && npm publish && git push --follow-tags",
+    "minor-release": "npm version minor && npm publish && git push --follow-tags",
+    "major-release": "npm version major && npm publish && git push --follow-tags"
+  },
+  "main": "index.js",
+  "author": {
+    "name": "Florent Bonomo",
+    "email": "flochtililoch@gmail.com"
+  },
+  "license": "ISC",
+  "dependencies": {
+    "color": "^0.10.1",
+    "debug": "^2.2.0",
+    "lodash": "^3.10.1",
+    "misfit-bolt": "^1.0.0"
+  },
+  "devDependencies": {
+    "jshint": "^2.8.0"
+  }
+}
