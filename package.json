@@ -7,6 +7,10 @@
     "misfit",
     "bolt"
   ],
+  "bugs": {
+    "url": "https://github.com/flochtililoch/homebridge-misfit-bolt/issues"
+  },
+  "homepage": "https://github.com/flochtililoch/homebridge-misfit-bolt#readme",
   "engines": {
     "node": ">=4.2.1",
     "homebridge": ">=0.2.0"
