@@ -1,6 +1,7 @@
 # homebridge-misfit-bolt
 
 Misfit Bolt plugin for [Homebridge](https://github.com/nfarina/homebridge).
+Let you control your Misfit Bolt via HomeKit / Siri.
 
 # Installation
 
@@ -14,7 +15,14 @@ Misfit Bolt plugin for [Homebridge](https://github.com/nfarina/homebridge).
 
 # Configuration
 
-Configuration sample:
+## Generate configuration
+
+After installing the plugin, you can run the following command if you want to generate your configuration automatically. This script helps finding surrounding Bolts, and outputs the required JSON configuration.
+```bash
+/usr/local/lib/node_modules/homebridge-misfit-bolt/generate-config
+```
+
+## Configuration sample
 
  ```json
   "platforms": [
@@ -24,18 +32,22 @@ Configuration sample:
           "accessories": [{
             "id": "1fd6828fedbd431aa38f48683b1ed92a",
             "name": "Bolt",
+            "timeout": 500,
             "disconnectTimeout": 5000
           }]
       }
   ]
 ```
 
-The module will fetch all your Misfit Bolts listed in `platform.accessories` and make them available to HomeBridge / HomeKit / Siri.
-Each accessory should have the following properties:
+## Accessories
 
-#### `id`:
+### Required properties
 
-UUID of your misfit bolt as recognized by your system. On linux, you can find out your UUIDs using the following command:
+#### `id`
+
+Identifier of your Misfit Bolt.
+
+On Linux, this corresponds to the bluetooth address of the bulb. You can find out your identifier using the following command:
 
 ```bash
 $ sudo hcitool lescan
@@ -53,16 +65,30 @@ will become in your config:
 
 ```
 
-#### `name`:
+**Note:**
+On OSX, the `id` field is a UUID which differs from the bluetooth address.
+
+
+#### `name`
 
 Name of your Bolt, as you want it to appear in your Homekit supported app.
 
 
-#### `disconnectTimeout`: (optional, default to 10000)
+### Optional properties
 
-Time in millisecond after which homebridge will disconnect from the bulb, so that it can be discovered by other BLE enabled devices (useful if you want to keep using the original Misfit Bolt app in parallel of using homebridge).
+#### `timeout` (in milliseconds, optional, default to `1000`)
+
+Time after which homebridge will abort any pending interaction with the bulb, such as connecting or setting values.
+
+
+#### `disconnectTimeout` (in milliseconds, optional, default to `10000`)
+
+Time after which homebridge will disconnect from the bulb.
+Useful if you want to keep using the original Misfit Bolt app in parallel of using homebridge. Next time a command is sent via homebridge, a reconnection will be attempted.
 
 
 # TODO
 
-Unit tests.
+- Move implementation that keep track of state, and allows manipulation of Hue / Brightness / Saturation to [`misfit-bolt`](https://github.com/flochtililoch/misfit-bolt) module.
+- Unit tests.
+
