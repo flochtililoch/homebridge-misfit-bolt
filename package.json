@@ -1,6 +1,6 @@
 {
   "name": "homebridge-misfit-bolt",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "description": "Misfit Bolt plugin for homebridge",
   "keywords": [
     "homebridge-plugin",
