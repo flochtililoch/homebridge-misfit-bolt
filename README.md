@@ -29,6 +29,7 @@ After installing the plugin, you can run the following command if you want to ge
       {
           "platform": "MisfitBolt",
           "name": "MisfitBolt",
+          "loadTimeout": 30000,
           "accessories": [{
             "id": "1fd6828fedbd431aa38f48683b1ed92a",
             "name": "Bolt",
@@ -75,6 +76,10 @@ Name of your Bolt, as you want it to appear in your Homekit supported app.
 
 
 ### Optional properties
+
+#### `loadTimeout` (in milliseconds, optional, defaults to no timeout)
+
+Time after which homebridge will stop attempting to connect to configured bolts. Helpful when all configured bolts aren't plugged in.
 
 #### `timeout` (in milliseconds, optional, default to `1000`)
 
