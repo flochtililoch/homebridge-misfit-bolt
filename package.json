@@ -12,7 +12,7 @@
   },
   "homepage": "https://github.com/flochtililoch/homebridge-misfit-bolt#readme",
   "engines": {
-    "node": ">=4.2.1",
+    "node": ">=5.5.0",
     "homebridge": ">=0.2.0"
   },
   "repository": {
@@ -32,10 +32,8 @@
   },
   "license": "ISC",
   "dependencies": {
-    "color": "^0.10.1",
     "debug": "^2.2.0",
-    "lodash": "^3.10.1",
-    "misfit-bolt": "^1.0.5"
+    "superagent": "^2.0.0"
   },
   "devDependencies": {
     "jshint": "^2.8.0"
