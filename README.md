@@ -1,7 +1,7 @@
 # homebridge-misfit-bolt
 
 Misfit Bolt plugin for [Homebridge](https://github.com/nfarina/homebridge).
-Let you control your Misfit Bolt via HomeKit / Siri.
+Let you control your Misfit Bolt via HomeKit / Siri. Requires [misfit-bolt-http](https://github.com/flochtililoch/misfit-bolt-http) module running as a separate program.
 
 # Installation
 
@@ -9,18 +9,7 @@ Let you control your Misfit Bolt via HomeKit / Siri.
 2. Install this plugin using: `npm install -g homebridge-misfit-bolt`
 3. Update your configuration file. See the sample below.
 
-# Updating
-
-1. npm update -g homebridge-misfit-bolt
-
 # Configuration
-
-## Generate configuration
-
-After installing the plugin, you can run the following command if you want to generate your configuration automatically. This script helps finding surrounding Bolts, and outputs the required JSON configuration.
-```bash
-/usr/local/lib/node_modules/homebridge-misfit-bolt/generate-config
-```
 
 ## Configuration sample
 
@@ -29,22 +18,18 @@ After installing the plugin, you can run the following command if you want to ge
       {
           "platform": "MisfitBolt",
           "name": "MisfitBolt",
-          "loadTimeout": 30000,
           "accessories": [{
-            "id": "1fd6828fedbd431aa38f48683b1ed92a",
+            "id": "20338f8afaac",
             "name": "Bolt",
-            "timeout": 500,
-            "disconnectTimeout": 5000
+            "baseUrl": "http://localhost:3000/20338f8afaac"
           }]
       }
   ]
 ```
 
-## Accessories
+## Accessories Required properties
 
-### Required properties
-
-#### `id`
+### `id`
 
 Identifier of your Misfit Bolt.
 
@@ -70,30 +55,17 @@ will become in your config:
 On OSX, the `id` field is a UUID which differs from the bluetooth address.
 
 
-#### `name`
+### `name`
 
-Name of your Bolt, as you want it to appear in your Homekit supported app.
-
-
-### Optional properties
-
-#### `loadTimeout` (in milliseconds, optional, defaults to no timeout)
-
-Time after which homebridge will stop attempting to connect to configured bolts. Helpful when all configured bolts aren't plugged in.
-
-#### `timeout` (in milliseconds, optional, default to `1000`)
-
-Time after which homebridge will abort any pending interaction with the bulb, such as connecting or setting values.
+Name of your Bolt, as you want it to appear in your HomeKit supported app.
 
 
-#### `disconnectTimeout` (in milliseconds, optional, default to `10000`)
+### `baseUrl`
 
-Time after which homebridge will disconnect from the bulb.
-Useful if you want to keep using the original Misfit Bolt app in parallel of using homebridge. Next time a command is sent via homebridge, a reconnection will be attempted.
+URL of the Bolt as exposed via `misfit-bolt-http` module. See [misfit-bolt-http](https://github.com/flochtililoch/misfit-bolt-http) for setup and configuration details.
 
 
 # TODO
 
-- Move implementation that keep track of state, and allows manipulation of Hue / Brightness / Saturation to [`misfit-bolt`](https://github.com/flochtililoch/misfit-bolt) module.
-- Unit tests.
+- Tests
 
