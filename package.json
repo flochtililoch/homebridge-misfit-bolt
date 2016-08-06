@@ -20,7 +20,7 @@
     "url": "https://github.com/flochtililoch/homebridge-misfit-bolt.git"
   },
   "scripts": {
-    "lint": "./node_modules/.bin/jshint *.js",
+    "lint": "./node_modules/.bin/jshint *.js lib/*.js",
     "patch-release": "npm version patch && npm publish && git push --follow-tags",
     "minor-release": "npm version minor && npm publish && git push --follow-tags",
     "major-release": "npm version major && npm publish && git push --follow-tags"
@@ -33,10 +33,9 @@
   "license": "ISC",
   "dependencies": {
     "debug": "^2.2.0",
-    "lodash": "^4.13.1",
     "superagent-cache": "^1.6.0"
   },
   "devDependencies": {
-    "jshint": "^2.8.0"
+    "jshint": "^2.9.2"
   }
 }
