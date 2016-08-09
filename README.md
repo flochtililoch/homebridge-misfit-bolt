@@ -41,12 +41,13 @@ LE Scan ...
 20:33:8F:8A:FA:AC MFBOLT
 ```
 
-will become in your config:
+will become in your config (assuming the service `misfit-bolt-http` runs locally on port `3000`):
 
 ```json
 {
   "id": "20338f8afaac",
-  "name": "Bolt"
+  "name": "Bolt",
+  "baseUrl": "http://localhost:3000/20338f8afaac"
 }
 
 ```
