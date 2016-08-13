@@ -7,3 +7,5 @@ module.exports = function (homebridge) {
     require('./lib/platform')(homebridge.hap)
   );
 };
+
+require('debug')(require('./package').name)(`Running from ${__dirname}`);
